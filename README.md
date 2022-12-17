@@ -50,3 +50,5 @@ This is the instruction to setup this project and run in your local machine. Not
 1. Run `pnpm install` to install dependencies.
 2. Run `pnpm db:migrate` to initial database.
 3. Run `npx prisma db seed` to seed database.
+4. Run `pnpm test` to run test suites.
+5. Run `pnpm start` to start graphql server.
