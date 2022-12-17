@@ -9,6 +9,37 @@ generator client {
 
 model User {
   id       String @id @default(uuid())
-  username String
+  username String @unique
   password String
+  createdLists    List[] @relation(name: "ListCreatedBy")
+  updatedLists    List[] @relation(name: "ListUpdatedBy")
+  createdTasks    Task[] @relation(name: "TaskCreatedBy")
+  updatedTasks    Task[] @relation(name: "TaskUpdatedBy")
+}
+
+model List {
+  listId          String    @id @default(uuid())
+  title           String    @unique
+  tasks           Task[]
+  createdAt       DateTime  @default(now())
+  createdBy       User      @relation(name: "ListCreatedBy", fields: [createdUserId], references: [id])
+  createdUserId   String
+  updatedAt       DateTime  @updatedAt
+  updatedBy       User      @relation(name: "ListUpdatedBy", fields: [updatedUserId], references: [id])
+  updatedUserId   String
+}
+
+model Task {
+  taskId          String    @id @default(uuid())
+  list            List      @relation(fields: [listId], references: [listId])
+  listId          String
+  title           String
+  position        Int       @default(0)
+  completed       Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+  createdBy       User      @relation(name: "TaskCreatedBy", fields: [createdUserId], references: [id])
+  createdUserId   String
+  updatedAt       DateTime  @updatedAt
+  updatedBy       User      @relation(name: "TaskUpdatedBy", fields: [updatedUserId], references: [id])
+  updatedUserId   String
 }
