@@ -31,7 +31,6 @@ export const typeDefs = gql`
   input CreateTaskInput {
     listId: ID!
     title: String!
-    description: String!
     createdUserId: String!
   }
 
