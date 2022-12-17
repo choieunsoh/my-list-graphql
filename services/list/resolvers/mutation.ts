@@ -79,7 +79,7 @@ export const mutation: Resolvers<Context>['Mutation'] = {
     })
 
     return {
-      success: !deleteTask,
+      success: !!deleteTask,
     }
   },
 
