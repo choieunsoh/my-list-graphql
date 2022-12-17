@@ -9,7 +9,7 @@
     "db:migrate": "dotenv -- pnpm prisma migrate dev",
     "db:reset": "dotenv -- pnpm prisma migrate reset",
     "start": "dotenv -- ts-node .",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles --verbose"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
